@@ -5,8 +5,9 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
 import page.PracticePage;
-import runners.Driver;
+import utilities.Driver;
 
 public class StepDefinition {
 
@@ -30,5 +31,27 @@ public class StepDefinition {
     @Then("Error message should be displayed")
     public void errorMessageShouldBeDisplayed() {
         practicePage.clickBMW();
+    }
+
+    @AfterMethod
+
+    @Given("User locates Switch to Alert Button using Xpath")
+    public void userLocatesSwitchToAlertButtonUsingXpath() {
+        driver.findElement(By.xpath("//input[@id='name']")).sendKeys("bermet");
+
+
+
+    }
+
+    @When("User clicks the  button for alert popup box")
+    public void userClicksTheButtonForAlertPopupBox() {
+        driver.findElement(By.xpath("//input[@id='alertbtn']")).click();
+
+    }
+
+    @Then("User gets the displayed text of the alert popup and prints it to console")
+    public void userGetsTheDisplayedTextOfTheAlertPopupAndPrintsItToConsole() {
+        String output =  driver.switchTo().alert().getText();
+        System.out.println(output);
     }
 }
