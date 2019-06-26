@@ -1,4 +1,4 @@
-package runners;
+package utilities;
 
 import cucumber.api.CucumberOptions;
 
